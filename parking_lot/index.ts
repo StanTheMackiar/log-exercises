@@ -21,8 +21,6 @@ interface Params {
   vacatedPositions: number[]
 }
 
-const parkingLot: number[] = Array.from({length: 20}).map((_, i) => i + 1)
-
 const MAX_POSITION = 20
 
 const getDistance = (vacatedPosition: number, carPosition: number): number => {
