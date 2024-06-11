@@ -1,24 +1,27 @@
-export const isPrime = (num: number): boolean => {
-  if (num <= 1) return false; // Los números menores o iguales a 1 no son primos
-  if (num <= 3) return true;  // 2 y 3 son números primos
+export const primeFactors = (num: number = 13195): number[] => {
+  const factors: number[] = [];
 
-  // Eliminar números pares y múltiplos de 3
-  if (num % 2 === 0 || num % 3 === 0) return false;
-
-  // Verificar divisores desde 5 hasta la raíz cuadrada del número
-  for (let i = 5; i * i <= num; i += 6) {
-    if (num % i === 0 || num % (i + 2) === 0) return false;
+  // Dividir por 2 hasta que num sea impar
+  while (num % 2 === 0) {
+    factors.push(2);
+    num = num / 2;
   }
 
-  return true; // Si no se encontraron divisores, el número es primo
+  // num debe ser impar en este punto, empezamos desde 3
+  for (let i = 3; i * i <= num; i += 2) {
+    while (num % i === 0) {
+      factors.push(i);
+      num = num / i;
+    }
+  }
+
+  // Si num es un número primo mayor que 2
+  if (num > 2) {
+    factors.push(num);
+  }
+
+  return factors;
 }
 
-export const getPrimeFactors = (num = 13195): number[] => {
-  const nums = Array.from({length: num}, (_, i) => i + 1)
 
-  const primes = nums.filter(num => isPrime(num))
-
-  return primes
-}
-
-console.log(getPrimeFactors())
+console.log(primeFactors())
