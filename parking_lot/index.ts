@@ -4,19 +4,7 @@
 //? los ultimos 10 en direccion a la salida
 
 //? Al principio, los 20 espacios estan ocupados
-interface WaitingCar {
-  position: number;
-  isLocated: boolean;
-}
-
-
-interface ParkingSpot {
-  num: number;
-  isFull: boolean;
-}
-
 interface Params {
-  // datasetsNumber?: number,
   waitingPositions: number[],
   vacatedPositions: number[]
 }
